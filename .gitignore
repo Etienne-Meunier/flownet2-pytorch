@@ -5,3 +5,7 @@ _ext
 work
 work/*
 _ext/
+*.egg-info/
+*build/
+*.pth.tar
+*dist/
