@@ -324,8 +324,7 @@ class ImagesFromFolder(data.Dataset):
     self.crop_size = args.crop_size
     self.render_size = args.inference_size
     self.replicates = replicates
-
-    images = sorted( glob( join(root, '*.' + iext) ) )
+    images = sorted( glob( join(root, '*.' + 'jpg') ) + glob( join(root, '*.' + 'png') ) )
     self.image_list = []
     for i in range(len(images)-1):
         im1 = images[i]
@@ -355,7 +354,7 @@ class ImagesFromFolder(data.Dataset):
     else:
         cropper = StaticCenterCrop(image_size, self.render_size)
     images = list(map(cropper, images))
-    
+
     images = np.array(images).transpose(3,0,1,2)
     images = torch.from_numpy(images.astype(np.float32))
 

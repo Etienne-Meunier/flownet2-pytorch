@@ -37,10 +37,9 @@ def recursive_compute_flownet2(root_input, root_output, relative_path='') :
             code = subprocess.call(['./main.py', '--inference',\
                             '--model', 'FlowNet2',\
                             '--inference_dataset', 'ImagesFromFolder',\
-                            '--inference_dataset_root', f,\
-                            '--inference_dataset_iext', 'jpg',\
+                            '--inference_dataset_root', f+'/',\
                             '--resume', f'{os.environ["Dataria"]}/Models/FlowNet_2/FlowNet2_checkpoint.pth.tar',\
-                            '--save_flow_root', output_path,\
+                            '--save_flow_root', output_path+'/',\
                             '--save_flow'])
             print('calling : ', code)
             print(f'./../flowizeti/flowizeti/__main__.py {output_path}/*.flo',\
